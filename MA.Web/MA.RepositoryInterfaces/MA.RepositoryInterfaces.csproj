@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IContextOptionsRepository.cs" />
     <Compile Include="IDataContext.cs" />
     <Compile Include="IReadonlyRepository.cs" />
     <Compile Include="IRepository.cs" />

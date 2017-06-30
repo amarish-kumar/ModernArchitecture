@@ -5,6 +5,9 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MA.RepositoryInterfaces;
+using MA.Repositories.EF;
+using Microsoft.AspNetCore.Http;
 
 namespace MA.Web
 {
@@ -27,7 +30,9 @@ namespace MA.Web
         {
             // Add framework services.
             services.AddMvc();
-            
+            services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IContextOptionsRepository, WebContextOptionsRepository>();
+
             return DependencyBuilder.GetServiceProvider(services, new DependencyBuilderOptions{ConnectionString = Configuration.GetConnectionString("DefaultConnection")});
         }
 

@@ -32,12 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Extensions.Configuration">
-      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.extensions.configuration\1.1.2\lib\netstandard1.1\Microsoft.Extensions.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Extensions.Configuration.Abstractions">
-      <HintPath>..\..\..\..\..\.nuget\packages\microsoft.extensions.configuration.abstractions\1.1.2\lib\netstandard1.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Extensions.DependencyInjection, Version=1.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.1.1.1\lib\netstandard1.1\Microsoft.Extensions.DependencyInjection.dll</HintPath>
     </Reference>
@@ -138,6 +132,14 @@
     <ProjectReference Include="..\MA.DomainEntities\MA.DomainEntities.csproj">
       <Project>{9B513541-7BDD-4640-A808-2527BD603A3E}</Project>
       <Name>MA.DomainEntities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MA.Repositories\MA.Repositories.csproj">
+      <Project>{F0043CCC-5938-4477-AAC3-7884AD85EEB7}</Project>
+      <Name>MA.Repositories</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MA.RepositoryInterfaces\MA.RepositoryInterfaces.csproj">
+      <Project>{D2345E2C-BB9A-4EF4-9434-AC532523E16A}</Project>
+      <Name>MA.RepositoryInterfaces</Name>
     </ProjectReference>
     <ProjectReference Include="..\MA.ServiceInterfaces\MA.ServiceInterfaces.csproj">
       <Project>{E1A77371-C629-4F45-AD73-EBF0BEEA85F4}</Project>

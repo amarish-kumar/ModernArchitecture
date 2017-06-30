@@ -2,6 +2,9 @@
 using MA.DI;
 using MA.ServiceInterfaces;
 using Microsoft.Extensions.DependencyInjection;
+using MA.RepositoryInterfaces;
+using MA.Repositories.EF;
+using System;
 
 namespace MA.Console
 {
@@ -9,7 +12,11 @@ namespace MA.Console
     {
         static void Main(string[] args)
         {
-            var container = DependencyBuilder.GetServiceProvider(new ServiceCollection(),
+            var services = new ServiceCollection();
+
+            services.AddTransient<IContextOptionsRepository, DefaultContextOptionsRepository>(x => new DefaultContextOptionsRepository(new DomainEntities.ContextOptions { TenantId = Guid.Empty }));
+
+            var container = DependencyBuilder.GetServiceProvider(services,
                 new DependencyBuilderOptions{ ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString });
 
             var userService = container.GetService<IUserService>();
