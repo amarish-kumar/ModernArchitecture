@@ -9,17 +9,19 @@ namespace MA.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IReadonlyRepository<User> _readonlyUserRepo;
         private readonly IDataContext _dataContext;
 
-        public UserService(IUserRepository userRepository, IDataContext context)
+        public UserService(IUserRepository userRepository, IReadonlyRepository<User> readonlyUserRepo, IDataContext context)
         {
             _userRepository = userRepository;
             _dataContext = context;
+            _readonlyUserRepo = readonlyUserRepo;
         }
 
         public IEnumerable<User> GetUsers(bool onlyActive = false)
         {
-            return onlyActive ? _userRepository.GetActiveUsers() : _userRepository.GetAll();
+            return onlyActive ? _userRepository.GetActiveUsers() : _readonlyUserRepo.GetAll();
         }
 
         public User GetUser(Guid id)
