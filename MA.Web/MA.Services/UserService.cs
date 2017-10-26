@@ -11,16 +11,20 @@ namespace MA.Services
         private readonly IUserRepository _userRepository;
         private readonly IReadonlyRepository<User> _readonlyUserRepo;
         private readonly IDataContext _dataContext;
+        private readonly ILoggerService _logger;
 
-        public UserService(IUserRepository userRepository, IReadonlyRepository<User> readonlyUserRepo, IDataContext context)
+        public UserService(IUserRepository userRepository, IReadonlyRepository<User> readonlyUserRepo, IDataContext context, ILoggerService logger)
         {
             _userRepository = userRepository;
             _dataContext = context;
+            _logger = logger;
             _readonlyUserRepo = readonlyUserRepo;
         }
 
         public IEnumerable<User> GetUsers(bool onlyActive = false)
         {
+            _logger.LogInfo("Helo");
+            _logger.LogError("Hellll nnnno");
             return onlyActive ? _userRepository.GetActiveUsers() : _readonlyUserRepo.GetAll();
         }
 

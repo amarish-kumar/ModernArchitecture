@@ -14,7 +14,7 @@ namespace MA.Console
         {
             var services = new ServiceCollection();
 
-            services.AddTransient<IContextOptionsRepository, DefaultContextOptionsRepository>(x => new DefaultContextOptionsRepository(new DomainEntities.ContextOptions { TenantId = Guid.Empty }));
+            services.AddScoped<IContextOptionsRepository, DefaultContextOptionsRepository>(x => new DefaultContextOptionsRepository(new DomainEntities.ContextOptions { TenantId = Guid.Empty }));
 
             var container = DependencyBuilder.GetServiceProvider(services,
                 new DependencyBuilderOptions{ ConnectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString });
